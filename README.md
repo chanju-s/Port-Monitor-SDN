@@ -1,23 +1,26 @@
 # Port Status Monitoring Tool (SDN - Mininet + POX)
 
-Objective
+Objective: 
 
 The objective of this project is to design and implement a Software Defined Networking (SDN) based tool to monitor switch port status in real time. The system detects port state changes (UP/DOWN), logs these events, generates alerts for failures, and analyzes the impact of port failures on network performance using latency and throughput measurements.
 
-Features
+Features: 
+
 Detect port UP/DOWN events using OpenFlow
 Log port status changes to a file (port_log.txt)
 Generate real-time alerts for port failures
 Display status updates in the controller terminal
 Perform performance analysis using ping (latency) and iperf (throughput)
 
-Tools & Technologies
+Tools & Technologies:
+
 POX Controller
 Mininet
 OpenFlow Protocol
 Python
 
-Setup
+Setup: 
+
 Start the POX controller
 cd ~/pox
 ./pox.py log.level --DEBUG openflow.of_01 forwarding.l2_learning port_monitor
@@ -25,24 +28,24 @@ Start Mininet in another terminal
 sudo mn --topo single,3 --controller=remote
 Testing & Usage
 
-Verify network connectivity
+Verify network connectivity: 
 pingall
 
 Expected result: All hosts should be reachable with 0% packet loss.
 
-Measure latency using ping
+Measure latency using ping: 
 h1 ping -c 3 h2
 
 Expected result: Low latency values (in milliseconds) with successful replies.
 
-Measure throughput using iperf
+Measure throughput using iperf: 
 h1 iperf -s &
 h2 iperf -c h1
 
 Expected result: High bandwidth (in Gbits/sec) indicating proper network performance.
 
-Simulate port failure
-h1 ifconfig h1-eth0 down
+Simulate port failure: 
+link h1 s1 down
 
 Expected behavior:
 
@@ -50,7 +53,7 @@ Controller detects port status change
 Alert message is displayed
 Network connectivity is disrupted
 
-Verify failure impact
+Verify failure impact:
 
 Ping test:
 h1 ping -c 3 h2
@@ -60,13 +63,14 @@ Throughput test:
 h2 iperf -c h1
 Expected: Connection failure or zero throughput
 
-Restore network
-h1 ifconfig h1-eth0 up
+Restore network:
+link h1 s1 up
 pingall
 
 Expected result: Connectivity is restored and network functions normally again.
 
-Output
+Output:
+
 Controller Output
 Displays port status changes and alert messages such as:
 Port 1 changed state to DOWN
@@ -79,7 +83,8 @@ Expected output:
 Port 1 -> DOWN
 Port 1 -> UP
 
-Screenshots
+Screenshots: 
+
 The screenshots folder includes:
 Normal operation (ping and iperf results)
 Port failure simulation
