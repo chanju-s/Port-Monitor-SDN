@@ -112,4 +112,5 @@ The screenshots folder contains:
 ---
 
 Conclusion
+
 This project demonstrates real-time monitoring of switch ports in an SDN environment. It detects failures, logs events, generates alerts, and clearly shows how network performance is affected when a port goes down.
